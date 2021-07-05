@@ -1,0 +1,44 @@
+syntax = "proto2";
+
+package netty.rpc.protobuf;
+
+option optimize_for = SPEED;
+option java_package = "netty.rpc.protobuf.model";
+option java_outer_classname = "MyDataInfo";
+
+
+message MyMessage {
+
+    enum DataType {
+        StudentType = 1;
+        TeacherType = 2;
+    }
+
+    required DataType data_type = 1;
+
+    oneof dataBody {
+        Student student = 2;
+        Teacher teacher = 3;
+    }
+
+}
+
+message Student {
+
+    optional string name = 1;
+
+    optional int32 age = 2;
+
+    optional string job = 3;
+
+}
+
+message Teacher {
+
+    optional string name = 1;
+
+    optional int32 age = 2;
+
+    optional string job = 3;
+
+}
